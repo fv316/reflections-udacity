@@ -94,6 +94,9 @@ Sprite = function () {
 
   this.children = {};
 
+  this.color = 'black';
+  this.solid = false;
+
   this.visible  = false;
   this.reap     = false;
   this.bridgesH = true;
@@ -241,7 +244,8 @@ Sprite = function () {
     for (child in this.children) {
       this.children[child].draw();
     }
-
+    this.context.strokeStyle = this.color;
+    this.context.fillStyle = this.color;
     this.context.beginPath();
 
     this.context.moveTo(this.points[0], this.points[1]);
@@ -707,7 +711,8 @@ Coin = function () {
               0,  5,
               5,  0,
               0, -5]);
-
+  this.color = 'yellow';
+  this.solid = true;
   this.collidesWith = ["ship"];
 
   this.newPosition = function () {
